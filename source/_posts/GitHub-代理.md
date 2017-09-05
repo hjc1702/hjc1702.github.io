@@ -17,7 +17,7 @@ tags: [GitHub]
 
 ## 代码
 
-编辑 `~/.ssh/config`, 添加一下代码
+编辑 `~/.ssh/config` 添加以下代码
 
 ```bash
 Host github.com
