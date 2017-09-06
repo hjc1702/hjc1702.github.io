@@ -17,6 +17,8 @@ tags: [GitHub]
 
 ## 代码
 
+### 配置 GitHub SSH 代理
+
 编辑 `~/.ssh/config` 添加以下代码
 
 ```bash
@@ -29,6 +31,17 @@ Host github.com
    # 如果是 socks5 代理，则把下面这行取消注释，并把 1086 改成自己 socks5 代理的端口
    # ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
 ```
+
+### 配置 Git HTTP 代理
+
+```baseh
+// 走http代理，替换成 "http://127.0.0.1:6667"
+git config --global http.proxy "socks5://127.0.0.1:1086"
+
+git config --global https.proxy "socks5://127.0.0.1:1086"
+```
+
+变更可以编辑 `~/.gitconfig`
 
 ## 参考资料
 
