@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>vscode eslint 配置 - Peter&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="最近开始学习 React，配置了下 vscode 的 eslint 和格式化 我的 es6 格式：  结尾加分号 2个空格缩进 用单引号  依赖npm eslint babel-eslint  使用 cnpm 或者 npm config set registry https://registry.npm.taobao.org 可以加快 npm install 速度 vscode 插">
+<meta name="keywords" content="vscode,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode eslint 配置">
+<meta property="og:url" content="https://hjc1702.github.io/2017/09/07/vscode-eslint-配置/index.html">
+<meta property="og:site_name" content="Peter&#39;s blog">
+<meta property="og:description" content="最近开始学习 React，配置了下 vscode 的 eslint 和格式化 我的 es6 格式：  结尾加分号 2个空格缩进 用单引号  依赖npm eslint babel-eslint  使用 cnpm 或者 npm config set registry https://registry.npm.taobao.org 可以加快 npm install 速度 vscode 插">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-05T09:52:03.700Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vscode eslint 配置">
+<meta name="twitter:description" content="最近开始学习 React，配置了下 vscode 的 eslint 和格式化 我的 es6 格式：  结尾加分号 2个空格缩进 用单引号  依赖npm eslint babel-eslint  使用 cnpm 或者 npm config set registry https://registry.npm.taobao.org 可以加快 npm install 速度 vscode 插">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-09-07T14:06:07.000Z">2017-09-07</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 523 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                vscode eslint 配置
+            
+        </h1>
+        <div class="content">
+            <p>最近开始学习 <code>React</code>，配置了下 <code>vscode</code> 的 <code>eslint</code> 和格式化</p>
+<p>我的 <code>es6</code> 格式：</p>
+<ul>
+<li>结尾加分号</li>
+<li>2个空格缩进</li>
+<li>用单引号</li>
+</ul>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><ul>
+<li><a href="https://github.com/eslint/eslint" target="_blank" rel="noopener">eslint</a></li>
+<li><a href="https://github.com/babel/babel-eslint" target="_blank" rel="noopener">babel-eslint</a></li>
+</ul>
+<p>使用 <a href="https://npm.taobao.org/" target="_blank" rel="noopener">cnpm</a> 或者 <code>npm config set registry https://registry.npm.taobao.org</code> 可以加快 <code>npm install</code> 速度</p>
+<h3 id="vscode-插件"><a href="#vscode-插件" class="headerlink" title="vscode 插件"></a>vscode 插件</h3><ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">eslint</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier - JavaScript formatter</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig" target="_blank" rel="noopener">EditorConfig for VS Code</a> (用来控制不同语言的文件的格式）</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="配置-eslint-解析器、规则"><a href="#配置-eslint-解析器、规则" class="headerlink" title="配置 eslint 解析器、规则"></a>配置 eslint 解析器、规则</h3><p>在项目根目录创建 <code>.eslintrc.json</code> 文件</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// 中文文档：http://eslint.cn/docs/rules/</span><br><span class="line">// 英文文档：https://eslint.org/docs/rules/</span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"parser"</span>: <span class="hljs-string">"babel-eslint"</span>,</span><br><span class="line">  <span class="hljs-attr">"env"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"browser"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-attr">"commonjs"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-attr">"es6"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-attr">"node"</span>: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"parserOptions"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"ecmaVersion"</span>: <span class="hljs-number">6</span>,</span><br><span class="line">    <span class="hljs-attr">"sourceType"</span>: <span class="hljs-string">"module"</span>,</span><br><span class="line">    <span class="hljs-attr">"ecmaFeatures"</span>: &#123;</span><br><span class="line">      <span class="hljs-attr">"jsx"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">      <span class="hljs-attr">"classes"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">      <span class="hljs-attr">"defaultParams"</span>: <span class="hljs-literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"rules"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"no-const-assign"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    <span class="hljs-attr">"no-extra-semi"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"no-fallthrough"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"no-empty"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"no-mixed-spaces-and-tabs"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"no-redeclare"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"no-this-before-super"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    <span class="hljs-attr">"no-undef"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    <span class="hljs-attr">"no-unreachable"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    <span class="hljs-attr">"no-use-before-define"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"constructor-super"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    <span class="hljs-attr">"curly"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"eqeqeq"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"func-names"</span>: <span class="hljs-number">0</span>,</span><br><span class="line">    <span class="hljs-attr">"valid-typeof"</span>: <span class="hljs-number">1</span>,</span><br><span class="line">    "semi": 1, // 结尾有分号</span><br><span class="line">    "quotes": [1, "single", &#123; "avoidEscape": true &#125;], // 使用单引号</span><br><span class="line">    "indent": [1, 2, &#123; "SwitchCase": 1 &#125;] // 使用2个空格缩进</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置-eslint-忽略的文件"><a href="#配置-eslint-忽略的文件" class="headerlink" title="配置 eslint 忽略的文件"></a>配置 eslint 忽略的文件</h3><p>有些文件不需要使用到 <code>eslint</code> 减少编辑器报错</p>
+<p>在项目根目录创建 <code>.eslintignore</code></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build/*.js</span><br><span class="line">config/*.js</span><br><span class="line">node_modules/*.js</span><br></pre></td></tr></table></figure>
+<h3 id="配置-Prettier"><a href="#配置-Prettier" class="headerlink" title="配置 Prettier"></a>配置 Prettier</h3><p>在项目根目录创建 <code>.prettierrc</code></p>
+<figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 更多配置见 https://github.com/prettier/prettier</span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"singleQuote"</span>: <span class="hljs-literal">true</span> // 格式化使用单引号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置-EditorConfig"><a href="#配置-EditorConfig" class="headerlink" title="配置 EditorConfig"></a>配置 EditorConfig</h3><p>配置不同语言文件的不同缩进格式</p>
+<p>在 <code>HOME</code> 目录下，创建文件。<code>vim ~/.editorconfig</code> </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># EditorConfig is awesome: http://EditorConfig.org</span><br><span class="line"></span><br><span class="line"># top-most EditorConfig file</span><br><span class="line">root = true</span><br><span class="line"></span><br><span class="line"># Unix-style newlines with a newline ending every file</span><br><span class="line">[*]</span><br><span class="line">end_of_line = lf</span><br><span class="line">charset = utf-8</span><br><span class="line">trim_trailing_whitespace = true</span><br><span class="line"></span><br><span class="line"># Matches multiple files with brace expansion notation</span><br><span class="line"># Set default charset</span><br><span class="line">[*.&#123;js,py&#125;]</span><br><span class="line">charset = utf-8</span><br><span class="line"></span><br><span class="line"># 4 space indentation</span><br><span class="line">[*.py]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[*.&#123;js, html, css&#125;]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br><span class="line"></span><br><span class="line">[Makefile]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 4</span><br><span class="line"></span><br><span class="line"># Indentation override for all JS under lib directory</span><br><span class="line">[lib/**.js]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br><span class="line"></span><br><span class="line"># Matches the exact files either package.json or .travis.yml</span><br><span class="line">[&#123;package.json,.travis.yml&#125;]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = 2</span><br></pre></td></tr></table></figure>
+<h3 id="配置-vscode"><a href="#配置-vscode" class="headerlink" title="配置 vscode"></a>配置 vscode</h3><p>编辑 vscode 的配置文件</p>
+<h4 id="保存自动格式化"><a href="#保存自动格式化" class="headerlink" title="保存自动格式化"></a>保存自动格式化</h4><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-attr">"editor.formatOnSave"</span>: <span class="hljs-literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在资源管理器中不显示-node-modules"><a href="#在资源管理器中不显示-node-modules" class="headerlink" title="在资源管理器中不显示 node_modules"></a>在资源管理器中不显示 node_modules</h4><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-attr">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="hljs-attr">"**/.git"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">        <span class="hljs-attr">"**/.svn"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">        <span class="hljs-attr">"**/.hg"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">        <span class="hljs-attr">"**/CVS"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">        <span class="hljs-attr">"**/.DS_Store"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">        <span class="hljs-attr">"**/node_modules"</span>: <span class="hljs-literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/vscode/">vscode</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/09/05/GitHub-代理/">
+                <span class="level-item">GitHub 代理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/uploads/boy.png">
+                    
+                    <p class="is-size-4 is-block">
+                        Peter He
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        👨‍💻‍
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/hjc1702">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/hjc1702">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Instagram" href="https://www.instagram.com/hjc1702/">
+                
+                <i class="fab fa-instagram"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/kibana/" style="font-size: 10px;">kibana</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+    </div>
+</div>
+
+    
+    
+        <div class="card card-transparent is-hidden-widescreen">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2017/09/07/vscode-eslint-配置/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode eslint 配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-09-07T14:06:07.000Z">2017-09-07</time></div>
+                    <a href="/2017/09/07/vscode-eslint-配置/" class="has-link-black-ter is-size-6">vscode eslint 配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/09/05/GitHub-代理/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="GitHub 代理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-09-05T09:40:20.000Z">2017-09-05</time></div>
+                    <a href="/2017/09/05/GitHub-代理/" class="has-link-black-ter is-size-6">GitHub 代理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/08/28/CentOS-6-搭建-Elasticsearch-集群/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CentOS 6 搭建 Elasticsearch 集群">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-08-28T09:27:19.000Z">2017-08-28</time></div>
+                    <a href="/2017/08/28/CentOS-6-搭建-Elasticsearch-集群/" class="has-link-black-ter is-size-6">CentOS 6 搭建 Elasticsearch 集群</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <ul class="menu-list">
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/Elasticsearch/">
+                        <span class="level-start">
+                            <span class="level-item">Elasticsearch</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/GitHub/">
+                        <span class="level-start">
+                            <span class="level-item">GitHub</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/React/">
+                        <span class="level-start">
+                            <span class="level-item">React</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/centos/">
+                        <span class="level-start">
+                            <span class="level-item">centos</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/kibana/">
+                        <span class="level-start">
+                            <span class="level-item">kibana</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/vscode/">
+                        <span class="level-start">
+                            <span class="level-item">vscode</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2017/09/07/vscode-eslint-配置/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vscode eslint 配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-09-07T14:06:07.000Z">2017-09-07</time></div>
+                    <a href="/2017/09/07/vscode-eslint-配置/" class="has-link-black-ter is-size-6">vscode eslint 配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/09/05/GitHub-代理/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="GitHub 代理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-09-05T09:40:20.000Z">2017-09-05</time></div>
+                    <a href="/2017/09/05/GitHub-代理/" class="has-link-black-ter is-size-6">GitHub 代理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/08/28/CentOS-6-搭建-Elasticsearch-集群/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CentOS 6 搭建 Elasticsearch 集群">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-08-28T09:27:19.000Z">2017-08-28</time></div>
+                    <a href="/2017/08/28/CentOS-6-搭建-Elasticsearch-集群/" class="has-link-black-ter is-size-6">CentOS 6 搭建 Elasticsearch 集群</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <ul class="menu-list">
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/Elasticsearch/">
+                        <span class="level-start">
+                            <span class="level-item">Elasticsearch</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/GitHub/">
+                        <span class="level-start">
+                            <span class="level-item">GitHub</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/React/">
+                        <span class="level-start">
+                            <span class="level-item">React</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/centos/">
+                        <span class="level-start">
+                            <span class="level-item">centos</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/kibana/">
+                        <span class="level-start">
+                            <span class="level-item">kibana</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/vscode/">
+                        <span class="level-start">
+                            <span class="level-item">vscode</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 Peter He&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
